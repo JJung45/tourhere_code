@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://localhost/';
 
 /*
 |--------------------------------------------------------------------------
@@ -314,7 +314,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'qwertyuiop';
 
 /*
 |--------------------------------------------------------------------------
@@ -371,7 +371,7 @@ $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
-$config['sess_match_ip'] = FALSE;
+$config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
 
@@ -469,3 +469,9 @@ $config['time_reference'] = 'local';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+$config['authenication'] = array(
+  'id'=>'wjdgkrud',
+  'pw'=>'1111'
+);

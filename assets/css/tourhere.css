@@ -1,0 +1,16 @@
+body{
+    font-size: 15px;
+    height: 100%;
+}
+#gnb{
+    width: 100%;
+}
+#gnb ul>li{
+    font-size: 20px;
+    padding-top: 15px;
+}
+#login{
+    float: right;
+    font-size: 20px;
+    padding-top: 25px;
+}
