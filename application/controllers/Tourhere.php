@@ -16,6 +16,7 @@ class Tourhere extends CI_Controller
         $this->load->view('footer');
     }
 
+
     public  function  board(){
         $this->load->view('head');
         $this->load->view('mainnav');

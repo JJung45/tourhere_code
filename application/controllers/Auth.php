@@ -31,25 +31,34 @@ class Auth extends CI_Controller
 
     function register(){
 
-        $this->form_validation->set_rules('name', 'userName', 'required|valid_name');
+        $this->basic();
+
+        $this->form_validation->set_rules('name', 'userName', 'required');
         $this->form_validation->set_rules('id', 'userId', 'required|min_length[5]|max_length[20]|is_unique[user.id]');
         $this->form_validation->set_rules('pw', 'userPw', 'required|min_length[6]|max_length[30]|matches[re_pw]');
         $this->form_validation->set_rules('re_pw', 'userRepw', 'required');
 
-        $this->basic();
 
         if($this->form_validation->run()==false){
             $this->load->view('register');
             echo "no";
         }else{
-            echo "ok";
+            $this->load->model('User_Model');
+            $pw = password_hash($this->input->post('pw'),PASSWORD_BCRYPT,["cost" => 8]);
+            $data = array(
+                'name' => $this->input->post('name'),
+                'id' => $this->input->post('id'),
+                'pw' => $pw
+            );
+            $this->User_Model->add($data);
+            redirect('/tourhere');
         }
         $this->load->view('footer');
     }
 
 
     function authenication(){
-        $authenication =  $this->config->item('authenication');
+
         if($this->input->post('id')==$authenication['id'] && $this->input->post('pw')==$authenication['pw']){
             $this->session->set_userdata('is_login',true);
             redirect('/tourhere');
