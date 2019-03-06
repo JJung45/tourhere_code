@@ -41,7 +41,6 @@ class Auth extends CI_Controller
 
         if($this->form_validation->run()==false){
             $this->load->view('register');
-            echo "no";
         }else{
             $this->load->model('User_Model');
             $pw = password_hash($this->input->post('pw'),PASSWORD_BCRYPT,["cost" => 8]);
@@ -58,9 +57,13 @@ class Auth extends CI_Controller
 
 
     function authenication(){
-
-        if($this->input->post('id')==$authenication['id'] && $this->input->post('pw')==$authenication['pw']){
+        $this->load->model('User_Model');
+        $user = $this->User_Model->getById(array(
+           'id'=>$this->input->post('id')
+        ));
+        if($this->input->post('id')==$user->id && password_verify($this->input->post('pw'),$user->pw)){
             $this->session->set_userdata('is_login',true);
+            $this->session->set_flashdata('message','로그인에 성공했습니다.');
             redirect('/tourhere');
         }else{
             $this->session->set_flashdata('message','로그인에 실패했습니다.');
