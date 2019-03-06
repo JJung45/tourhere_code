@@ -24,11 +24,14 @@ class Tourhere extends CI_Controller
         $this->load->view('footer');
     }
 
+    public function mypage(){
+        $this->load->view('head');
+        $this->load->view('mypage');
+        $this->load->view('footer');
+    }
+
     public function  login(){
         $this->basic();
-        //로그인 필요
-
-        //로그인이 되어있지 않다면 로그인 페이지를 리다이렉션
 
         if(!$this->session->userdata('is_login')) {
             redirect('/auth/login');

@@ -1,6 +1,6 @@
 <div id="bodyLayer">
     <div class="loginLayer">
-        <a href="/index.php/tourhere">x</a>
+        <a href="/tourhere">x</a>
         <div class="loginContent">
             <div class="loginTop">
                 <h2>Register</h2>

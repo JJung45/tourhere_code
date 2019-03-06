@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/select.css">
     <link rel="stylesheet" href="/assets/css/login.css">
-    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/css/posting.css">
     <link rel="stylesheet" href="/assets/css/mypage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>

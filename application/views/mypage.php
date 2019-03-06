@@ -10,9 +10,9 @@
             <p class="userId">ddd님</p>
         </div>
         <ul class="userDown">
-            <li><a href="posting.php">글 작성</a></li>
+            <li><a href="/posting">글 작성</a></li>
             <li><a href="../member/update.php">회원정보수정</a></li>
-            <li><a href="/index.php/auth/logout">로그아웃</a></li>
+            <li><a href="/auth/logout">로그아웃</a></li>
         </ul>
     </div>
 </div>

@@ -31,7 +31,6 @@ table {border-collapse:collapse;}
     clear: both;
 }
 .center {
-    max-width: 1200px;
     margin: 0 auto;
 }
 [class*="col-"] {

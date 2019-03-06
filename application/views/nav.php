@@ -1,6 +1,6 @@
     <div class="clearfix hMenu">
         <div class="center gnb">
-            <h1><a href="/index.php/tourhere/">Tourhere</a></h1>
+            <h1><a href="/tourhere/">Tourhere</a></h1>
             <ul>
                 <li class="mainM"><a href="select.php?search=1">Accomodation</a></li>
                 <li class="mainM"><a href="select.php?search=2">Restaurant</a></li>
@@ -9,11 +9,11 @@
                     <?php
                     if(!$this->session->userdata('is_login')) {
                         ?>
-                        <a href="/index.php/auth/login">LOGIN</a>
+                        <a href="/auth/login">LOGIN</a>
                         <?php
                     }else {
                         ?>
-                        <a href="/index.php/mypage/main">My Page</a>
+                        <a href="/tourhere/mypage">My Page</a>
                         <?php
                     }
                     ?>
@@ -29,11 +29,11 @@
                             <?php
                             if(!$this->session->userdata('is_login')) {
                                 ?>
-                                <a href="/index.php/auth/login">LOGIN</a>
+                                <a href="/auth/login">LOGIN</a>
                                 <?php
                             }else {
                                 ?>
-                                <a href="/index.php/mypage/main">My Page</a>
+                                <a href="/tourhere/mypage">My Page</a>
                                 <?php
                             }
                             ?>

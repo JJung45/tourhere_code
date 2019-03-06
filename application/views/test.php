@@ -6,7 +6,7 @@
 
 <?php echo form_open('formtest'); ?>
 
-<form action="/index.php/formtest" method="post">
+<form action="/formtest" method="post">
 
 <h5>Username</h5>
 <input type="text" name="username" value="" size="50" />

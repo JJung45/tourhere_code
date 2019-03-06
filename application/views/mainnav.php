@@ -15,11 +15,11 @@
             <?php
             if(!$this->session->userdata('is_login')) {
                 ?>
-                <a href="/index.php/auth/login">LOGIN</a>
+                <a href="/auth/login">LOGIN</a>
                 <?php
             }else {
                 ?>
-                <a href="/index.php/mypage/main">My Page</a>
+                <a href="/mypage/main">My Page</a>
                 <?php
             }
             ?>

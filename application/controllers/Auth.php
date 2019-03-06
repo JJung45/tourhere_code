@@ -10,11 +10,11 @@ class Auth extends CI_Controller
     {
         parent::__construct();
 
-        // load form and url helpers
-        $this->load->helper(array('form', 'url'));
-
-        // load form_validation library
-        $this->load->library('form_validation');
+//        // load form and url helpers
+//        $this->load->helper(array('form', 'url'));
+//
+//        // load form_validation library
+//        $this->load->library('form_validation');
     }
 
     public function login(){
@@ -75,7 +75,6 @@ class Auth extends CI_Controller
         $this->load->view('head');
         $this->load->view('nav');
         $this->load->view('main');
-//        $data = $this->user_model->gets();
     }
 
 }

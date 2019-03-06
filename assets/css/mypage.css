@@ -117,14 +117,14 @@
     overflow: hidden;
 }
 .sectionContent ul:nth-child(1){
-    margin-top: 55px;
+    padding-top: 300px;
 }
 .sectionContent ul>li{
     padding: 10px;
 }
 .sectionContent .gallery{
     width: 100%;
-    height: 250px;
+    height: 400px;
 	position: relative;
 	top: 0;
 	left: 0;
