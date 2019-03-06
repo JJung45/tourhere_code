@@ -9,8 +9,12 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->database();
-//        $this->load->model('user_model');
+
+        // load form and url helpers
+        $this->load->helper(array('form', 'url'));
+
+        // load form_validation library
+        $this->load->library('form_validation');
     }
 
     public function login(){
@@ -26,16 +30,19 @@ class Auth extends CI_Controller
 
 
     function register(){
+
+        $this->form_validation->set_rules('name', 'userName', 'required|valid_name');
+        $this->form_validation->set_rules('id', 'userId', 'required|min_length[5]|max_length[20]|is_unique[user.id]');
+        $this->form_validation->set_rules('pw', 'userPw', 'required|min_length[6]|max_length[30]|matches[re_pw]');
+        $this->form_validation->set_rules('re_pw', 'userRepw', 'required');
+
         $this->basic();
-        $this->form_validation->set_rules('name', '이름', 'required|valid_name|is_unique[user.name]');
-        $this->form_validation->set_rules('id', '아이디', 'required|min_length[5]|max_length[20]');
-        $this->form_validation->set_rules('pw', '비밀번호', 'required|min_length[6]|max_length[30]|matches[re_password]');
-        $this->form_validation->set_rules('re_pw', '비밀번호확인', 'required');
 
         if($this->form_validation->run()==false){
             $this->load->view('register');
+            echo "no";
         }else{
-
+            echo "ok";
         }
         $this->load->view('footer');
     }

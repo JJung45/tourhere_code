@@ -28,7 +28,7 @@ subLi.on('click', function(){
     },1000);
 })
 
-let bodyLayer=$('#main');
+let bodyLayer=$('#wrap');
 
 let loginLayer=$('.loginLayer');
 
@@ -40,3 +40,10 @@ loginLayer.css({
     left: loginLayerLeft,
     top: loginLayerTop
 });
+
+let goTop=$('.goTop');
+goTop.on('click',function(){
+    $('html,body').animate({
+        scrollTop: 0
+    },400);
+})

@@ -32,7 +32,7 @@ class Tourhere extends CI_Controller
         if(!$this->session->userdata('is_login')) {
             redirect('/auth/login');
         }else{
-            redirect('/auth/logout');
+            redirect('/mypage/main');
         }
         $this->load->view('footer');
     }
