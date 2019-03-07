@@ -23,21 +23,36 @@ class Posting extends CI_Controller{
         if($this->form_validation->run()==false){
             $this->base();
         }else{
-            $config['upload_path'] = './uploads/';
+
+            $config['upload_path'] = './assets/upload';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 100;
+            $config['max_size']             = 300;
             $config['max_width']            = 1024;
             $config['max_height']           = 768;
 
             $this->load->library('upload',$config);
 
-            if(!$this->upload->do_upload()){
-                echo "업로드 실패";
-            }else{
-                echo "업로드 성공";
+            $this->upload->initialize($config);
+
+            $file = array();
+            for($i=0; $i<$_POST['imgcount'];$i++){
+                $this->upload->initialize($config);
+                $this->upload->do_upload('image_'.$i);
+                $file[$i] = $_FILES['image_'.$i]['name'];
             }
 
-            echo "성공";
+
+            $this->load->model('Board_Model');
+            $fileArr=implode(',',$file);
+            $data = array(
+                'id' => $_POST['id'],
+                'img' => $fileArr,
+                'txt' => $_POST['txt'],
+            );
+            $this->Board_Model->add($data);
+
+            echo "업로드성공";
+
         }
 
     }

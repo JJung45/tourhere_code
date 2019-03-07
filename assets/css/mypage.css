@@ -117,7 +117,7 @@
     overflow: hidden;
 }
 .sectionContent ul:nth-child(1){
-    padding-top: 300px;
+    padding-top: 250px;
 }
 .sectionContent ul>li{
     padding: 10px;

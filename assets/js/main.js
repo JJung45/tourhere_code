@@ -91,6 +91,7 @@ function deleteImageAction(index){
 
 function submitAction(){
     let filed=new FormData();
+    let length = sel_files.length;
 
     if(sel_files.length<1){
         alert("업로드할 파일을 선택하세요");
@@ -104,22 +105,59 @@ function submitAction(){
 
     let userId = $('#userId').val();
     let userTxt = $('#userTxt').val();
+    let userFile = $('#upload').val();
 
     console.log(userTxt);
     console.log(userId);
+    console.log(userFile);
 
+    filed.append("txt",$('#userTxt').val());
+    filed.append("id",$('#userId').val());
+    filed.append("imgcount",length);
 
     $.ajax({
         url:"/posting/do_upload",
         type: 'POST',
-        data:{id:userId, txt: userTxt},
+        processData: false,
+        contentType: false,
+        data: filed,
         dataType:'json',
         success: function(repons) {
             alert(repons.currentTarget.responseText);
-            location.href='/tourhere/mypage';
+            window.location.replace('/board/mypage');
         },
         error: function(request, status, error) {
             alert(request.responseText);
         }
     });
+    //
+    //
+    // let data=new FormData();
+    //
+    // if(sel_files.length<1){
+    //     alert("업로드할 파일을 선택하세요");
+    //     return;
+    // }
+    //
+    // for(let i=0, len=sel_files.length; i<len; i++){
+    //     let name="image_"+i;
+    //     data.append(name,sel_files[i]);
+    // }
+    // data.append("id", $('#userId').val());
+    // data.append("txt",$('#userTxt').val());
+    //
+    // let xhr=new XMLHttpRequest();
+    // xhr.open("POST",'/posting/do_upload');
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.onload=function(e){
+    //     if(this.status==200){
+    //         console.log("result: "+e.currentTarget.responseText);
+    //
+    //         alert(e.currentTarget.responseText);
+    //         location.href='select.php';
+    //     }else{
+    //         console.log("no");
+    //     }
+    // }
+    // xhr.send(data);
 }

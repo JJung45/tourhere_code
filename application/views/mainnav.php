@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" style="height: 60px;">
     <div class="center headerContent">
         <div class="selectMenu">
             <div class="selectMenul">
@@ -19,7 +19,7 @@
                 <?php
             }else {
                 ?>
-                <a href="/mypage/main">My Page</a>
+                <a href="/board/mypage">My Page</a>
                 <?php
             }
             ?>

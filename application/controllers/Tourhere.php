@@ -16,27 +16,13 @@ class Tourhere extends CI_Controller
         $this->load->view('footer');
     }
 
-
-    public  function  board(){
-        $this->load->view('head');
-        $this->load->view('mainnav');
-        $this->load->view('board');
-        $this->load->view('footer');
-    }
-
-    public function mypage(){
-        $this->load->view('head');
-        $this->load->view('mypage');
-        $this->load->view('footer');
-    }
-
     public function  login(){
         $this->basic();
 
         if(!$this->session->userdata('is_login')) {
             redirect('/auth/login');
         }else{
-            redirect('/mypage/main');
+            redirect('/tourhere');
         }
         $this->load->view('footer');
     }
