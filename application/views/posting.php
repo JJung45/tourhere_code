@@ -1,11 +1,8 @@
-<?php
-    var_dump($this->session->all_userdata());
-    $id = $this->session->userdata('logged_in');
-?>
 <div class="center contents posting">
-    <a href="mypage.php" class="arrow"><img src="/assets/img/mybackarrow.png" alt="back"></a>
-    <?php echo form_open_multipart('/posting');?>
-        <input type="hidden" name="id" id="userId" value='<?= $id ?>'/>
+    <a href="mypage.php" class="arrow"><img src="/assets/img/mybackarrow.png" alt="b
+    ack"></a>
+    <?php echo form_open_multipart('/posting/do_upload');?>
+        <input type="hidden" name="id" id="userId" value='<?= $this->session->userdata('userId'); ?>'/>
         <div class="gall">
             <img src="/assets/img/plus.svg" alt="plus" id="img">
         </div>

@@ -90,10 +90,16 @@ function deleteImageAction(index){
 }
 
 function submitAction(){
+    let filed=new FormData();
 
     if(sel_files.length<1){
         alert("업로드할 파일을 선택하세요");
         return;
+    }
+
+    for(let i=0, len=sel_files.length; i<len; i++){
+        let name="image_"+i;
+        filed.append(name,sel_files[i]);
     }
 
     let userId = $('#userId').val();
@@ -101,8 +107,10 @@ function submitAction(){
 
     console.log(userTxt);
     console.log(userId);
+
+
     $.ajax({
-        url:"<?php echo site_url('posting/do_upload')?>",
+        url:"/posting/do_upload",
         type: 'POST',
         data:{id:userId, txt: userTxt},
         dataType:'json',
@@ -110,8 +118,8 @@ function submitAction(){
             alert(repons.currentTarget.responseText);
             location.href='/tourhere/mypage';
         },
-        error: function() {
-            alert("Invalide!");
+        error: function(request, status, error) {
+            alert(request.responseText);
         }
     });
 }

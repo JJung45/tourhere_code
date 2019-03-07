@@ -63,6 +63,7 @@ class Auth extends CI_Controller
         ));
         if($this->input->post('id')==$user->id && password_verify($this->input->post('pw'),$user->pw)){
             $this->session->set_userdata('is_login',true);
+            $this->session->set_userdata('userId',$this->input->post('id'));
             $this->session->set_flashdata('message','로그인에 성공했습니다.');
             redirect('/tourhere');
         }else{

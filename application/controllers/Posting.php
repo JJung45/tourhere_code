@@ -18,7 +18,7 @@ class Posting extends CI_Controller{
     function do_upload(){
 
         $this->form_validation->set_rules('id', 'userId', 'required');
-        $this->form_validation->set_rules('userTxt', 'userTxt', 'required');
+        $this->form_validation->set_rules('txt', 'userTxt', 'required');
 
         if($this->form_validation->run()==false){
             $this->base();
@@ -35,8 +35,9 @@ class Posting extends CI_Controller{
                 echo "업로드 실패";
             }else{
                 echo "업로드 성공";
-
             }
+
+            echo "성공";
         }
 
     }
