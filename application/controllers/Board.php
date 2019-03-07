@@ -44,9 +44,19 @@ class Board extends CI_Controller
         }
     }
 
+    //무한스크롤 시도
+    public function page(){
+
+        $this->load->model('Board_Model');
+
+        $page = $this->input->post('pagenum');
+        $data['clien'] = $this->Board_Model->get_page(intval($page));
+        $this->load->view('/board/main/page',$data);
+    }
 
 
-    public function view(){
+
+    public function view(){//작업 미완료
         $this->load->view('head');
 
 
@@ -93,8 +103,10 @@ class Board extends CI_Controller
 
     }
 
-    public function array_board(){
-
-    }
+//    public function notification(){
+//        $this->load->view('head');
+//        $this->load->view('notification');
+//        $this->load->view('footer');
+//    }
 
 }

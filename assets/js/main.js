@@ -130,34 +130,5 @@ function submitAction(){
             alert(request.responseText);
         }
     });
-    //
-    //
-    // let data=new FormData();
-    //
-    // if(sel_files.length<1){
-    //     alert("업로드할 파일을 선택하세요");
-    //     return;
-    // }
-    //
-    // for(let i=0, len=sel_files.length; i<len; i++){
-    //     let name="image_"+i;
-    //     data.append(name,sel_files[i]);
-    // }
-    // data.append("id", $('#userId').val());
-    // data.append("txt",$('#userTxt').val());
-    //
-    // let xhr=new XMLHttpRequest();
-    // xhr.open("POST",'/posting/do_upload');
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // xhr.onload=function(e){
-    //     if(this.status==200){
-    //         console.log("result: "+e.currentTarget.responseText);
-    //
-    //         alert(e.currentTarget.responseText);
-    //         location.href='select.php';
-    //     }else{
-    //         console.log("no");
-    //     }
-    // }
-    // xhr.send(data);
+
 }

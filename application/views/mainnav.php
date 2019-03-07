@@ -1,3 +1,14 @@
+<?php
+    if(!$this->session->userData('userId')){
+        echo "
+        <script>
+            alert('로그인 후 이용가능합니다.');
+        </script>";
+
+        redirect('/auth/login');
+    }
+?>
+
 <div class="header" style="height: 60px;">
     <div class="center headerContent">
         <div class="selectMenu">
@@ -19,7 +30,8 @@
                 <?php
             }else {
                 ?>
-                <a href="/board/mypage">My Page</a>
+                <a href="/board/mypage">My Page/</a>
+                <a href="/board/notification">Notification</a>
                 <?php
             }
             ?>

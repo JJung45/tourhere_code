@@ -13,7 +13,8 @@
                         <?php
                     }else {
                         ?>
-                        <a href="/board/mypage">My Page</a>
+                        <a href="/board/mypage">My Page/</a>
+                        <a href="/board/notification">Notification</a>
                         <?php
                     }
                     ?>
@@ -33,7 +34,8 @@
                                 <?php
                             }else {
                                 ?>
-                                <a href="/board/mypage">My Page</a>
+                                <a href="/board/mypage">My Page/</a>
+                                <a href="/board/notification">Notification</a>
                                 <?php
                             }
                             ?>

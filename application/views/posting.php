@@ -1,3 +1,10 @@
+<?php
+if(!$this->session->userData('userId')){
+
+    redirect('/auth/login');
+}
+?>
+
 <div class="center contents posting">
     <a href="/board/mypage" class="arrow"><img src="/assets/img/mybackarrow.png" alt="b
     ack"></a>
