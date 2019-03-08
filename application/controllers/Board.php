@@ -28,7 +28,6 @@ class Board extends CI_Controller
 
        $this->load->view('footer');
 
-
     }
 
     //무한스크롤 시도
@@ -43,8 +42,6 @@ class Board extends CI_Controller
     }
 
     public function boardList(){
-
-        $this->load->model('Board_Model');
 
         $page = $this->input->get('pagenum') ?? 0;
         $data['boards'] = $this->Board_Model->get_page($page);

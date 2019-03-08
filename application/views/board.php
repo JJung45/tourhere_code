@@ -39,7 +39,7 @@
             }).fail(function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError);
             })
-        }
     }
+
 
 </script>
