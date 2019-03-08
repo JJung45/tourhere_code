@@ -1,4 +1,3 @@
-<?php var_dump($boards); ?>
 <div class="selectMain">
     <div class="center selectContent">
         <ul id="ul">
@@ -34,7 +33,7 @@
     });
 
     function load_contents() {
-            $.get('board/boardList', {'pagenum': track_page}, function (data) {
+            $.get('/board/boardList', $.param({'pagenum': track_page}), function (data) {
                 $("#ul").append(data);
                 track_page++;
             }).fail(function (xhr, ajaxOptions, thrownError) {
