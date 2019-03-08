@@ -18,8 +18,7 @@ class Board extends CI_Controller
 
         $this->load->model('Board_Model');
 
-        $page = $this->input->post('pagenum');
-        $board = $this->Board_Model->get_page(intval($page));
+        $board = $this->Board_Model->getAll();
 
         $boards = array();
 

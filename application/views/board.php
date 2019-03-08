@@ -36,7 +36,7 @@
     var track_page = 1;
     var loading = false;
 
-    load_contents();
+    //load_contents();
 
     $(window).scroll(function(){
         if($(window).scrollTop()+$(window).height()>=$(document).height()){
