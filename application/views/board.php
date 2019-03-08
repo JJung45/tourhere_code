@@ -33,7 +33,7 @@
     });
 
     function load_contents() {
-            $.get('main', {'pagenum': track_page}, function (data) {
+            $.get('board/boardList', {'pagenum': track_page}, function (data) {
                 $("#ul").append(data);
                 track_page++;
             }).fail(function (xhr, ajaxOptions, thrownError) {

@@ -42,6 +42,16 @@ class Board extends CI_Controller
         $this->load->view('/board/main',$data);
     }
 
+    public function boardList(){
+
+        $this->load->model('Board_Model');
+
+        $page = $this->input->get('pagenum') ?? 0;
+        $data['boards'] = $this->Board_Model->get_page($page);
+
+        $this->load->view('/ajax/board_list', $data);
+    }
+
 
 
     public function view(){//작업 미완료
