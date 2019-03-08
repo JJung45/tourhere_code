@@ -18,33 +18,13 @@ class Board extends CI_Controller
 
         $this->load->model('Board_Model');
 
-        $page = $this->input->post('pagenum');
-        $board = $this->Board_Model->get_page(intval($page));
+        $page = $this->input->post('pagenum') ?? 0;
+        $boards = $this->Board_Model->get_page(intval($page));
 
-        $boards = array();
-
-        if ($board != 0) {
-            $i = 0;
-            $boards['bidx'] = array();
-            $boards['id'] = array();
-            $boards['img'] = array();
-            $boards['txt'] = array();
-            $boards['created'] = array();
-            foreach ($board as $board) {
-                $boards['bidx'][$i] = $board->bidx;
-                $boards['id'][$i] = $board->id;
-                $boards['img'][$i] = $board->img;
-                $boards['txt'][$i] = $board->txt;
-                $boards['created'][$i] = $board->created;
-                $i++;
-            }
-
-            $this->load->view('board', $boards);
-            $this->load->view('footer');
-        } else {
-            $this->load->view('board');
-            $this->load->view('footer');
-        }
+        $this->load->view('board', [
+            'boards' => $boards
+        ]);
+        $this->load->view('footer');
     }
 
     //무한스크롤 시도
@@ -55,6 +35,16 @@ class Board extends CI_Controller
         $page = $this->input->post('pagenum');
         $data['clien'] = $this->Board_Model->get_page(intval($page));
         $this->load->view('/board/main',$data);
+    }
+
+    public function boardList(){
+
+        $this->load->model('Board_Model');
+
+        $page = $this->input->get('pagenum') ?? 0;
+        $data['boards'] = $this->Board_Model->get_page($page);
+
+        $this->load->view('/ajax/board_list', $data);
     }
 
 
