@@ -9,14 +9,14 @@ class Board extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('Board_Model');
     }
 
     public function main()
     {
         $this->load->view('head');
         $this->load->view('mainnav');
-
-        $this->load->model('Board_Model');
 
         $board = $this->Board_Model->getAll();
 
@@ -51,6 +51,7 @@ class Board extends CI_Controller
 
         $this->load->model('Board_Model');
 
+
         $page = $this->input->post('pagenum');
         $data['clien'] = $this->Board_Model->get_page(intval($page));
         $this->load->view('/board/main',$data);
@@ -60,9 +61,7 @@ class Board extends CI_Controller
 
     public function view(){//작업 미완료
         $this->load->view('head');
-
-
-
+        $get = $this->
         $this->load->view('view');
         $this->load->view('footer');
     }
@@ -73,7 +72,6 @@ class Board extends CI_Controller
 
         $this->load->view('head');
 
-        $this->load->model('Board_Model');
         $board = $this->Board_Model->getById(array(
             'id' => $this->session->userdata('userId')
         ));
@@ -106,8 +104,41 @@ class Board extends CI_Controller
     }
 
     public function notification(){
+
         $this->load->view('head');
-        $this->load->view('notification');
+
+        $this->load->library('pagination');
+
+        $config['base_url']= '/board/notification/';
+        $config['total_rows'] = 200;
+        $config['full_tag_open']='<div style="position: absolute;bottom: 20px;left: 50%;">';
+        $config['full_tag_close']='</div>';
+        $config['next_tag_open'] = '<span>';
+        $config['next_tag_close'] = '</span>';
+        $config['prev_tag_open'] = '<span>';
+        $config['prev_tag_close'] = '</span>';
+        $config['num_tag_open'] = '<span>';
+        $config['num_tag_close'] = '</span>';
+        $config['first_link'] = 1;
+        $config['first_tag_open'] = '<span>';
+        $config['first_tag_close'] = '</span>';
+
+        $data['perPage']=$config['per_page']= 10;
+        $data['pageNum']=$offset = $this->uri->segment(3,0);
+        $data['result']=$this->Board_Model->select_entry($data['perPage'], $offset);
+        $data['getTotalData']=$config['total_rows']=$this->Board_Model->total_entry();
+
+        $this->pagination->initialize($config);
+
+
+        echo $this->pagination->create_links();
+        $this->load->view('notification', $data);
+
+
+//        $this->pagination->initialize($config);
+//
+//        echo $this->pagination->create_links();
+
         $this->load->view('footer');
     }
 

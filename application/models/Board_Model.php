@@ -27,4 +27,21 @@ class Board_Model extends CI_Model {
         return $query->result();
     }
 
+    //페이징네이션적용
+    function total_entry(){
+        $query = $this->db->get('notification');
+        return $query->num_rows();
+    }
+
+    function select_entry($list_num, $offset){
+        $query = $this->db->get('notification', $list_num,$offset);
+        return $query->result();
+    }
+
+    //board자세히보기
+    function details($bidx){
+        $sql = "SELECT * FROM board WHERE bidx=?";
+        return $this->db->query($sql,array('$bidx'=> $bidx))->result();
+    }
+
 }

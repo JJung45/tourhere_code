@@ -11,7 +11,7 @@
                 $imagepath = "/assets/upload/".$image[0];
 
                 echo " <li class='col-4'>
-                        <a href='/board/view?num=".$bidx[$count]."' style='display:block'><div class='gallery' style='background:url(".$imagepath.") no-repeat 50%; background-size:cover'>
+                        <a href='/board/".$bidx[$count]."' style='display:block'><div class='gallery' style='background:url(".$imagepath.") no-repeat 50%; background-size:cover'>
                         </div></a>
                         <div class='selectxt'>
                             

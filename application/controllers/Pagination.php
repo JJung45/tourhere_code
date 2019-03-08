@@ -12,13 +12,15 @@ class Pagination extends CI_Controller
     {
         $this->load->library('pagination');
 
-        $config['base_url'] = 'http://localhost/board/';
-        $config['uri_segment'] = 3;
-        $config['total_rows'] = 200;
-        $config['per_page'] = 20;
-        $config['num_links'] = 2;
-        $config['use_page_numbers'] = TRUE;
-        $config['page_query_string'] = TRUE;
+        $config['base_url']= '/board/notification/';
+        $data['perPage']=$config['per_page']= 10;
+        $data['pageNum']=$offset = $this->uri->segment(3,0);
+        $data['result']=$this->Board_model->select_entry($data['perPage'], $offset);
+        $data['getTotalData']=$config['total_rows']=$this->Board_model->total_entry();
+        $config['page_query_string']=FALSE;
+        $this->pagination->initialize($config);
+        $data['pagenav'] = $this->pagination->create_links();
+        $this->load->view('notification', $data);
 
 
         $this->pagination->initialize($config);
