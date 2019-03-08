@@ -19,7 +19,7 @@ class Board extends CI_Controller
         $this->load->view('head');
         $this->load->view('mainnav');
 
-        $page = $this->input->post('pagenum') ?? 0;
+        $page = $this->input->get('pagenum') ?? 0;
         $boards = $this->Board_Model->get_page(intval($page));
 
         $this->load->view('board',[
@@ -53,7 +53,7 @@ class Board extends CI_Controller
 
     public function view(){//작업 미완료
         $this->load->view('head');
-        $get = $this->
+
         $this->load->view('view');
         $this->load->view('footer');
     }

@@ -1,3 +1,4 @@
+<?php var_dump($boards); ?>
 <div class="selectMain">
     <div class="center selectContent">
         <ul id="ul">
