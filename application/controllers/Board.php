@@ -17,7 +17,9 @@ class Board extends CI_Controller
         $this->load->view('mainnav');
 
         $this->load->model('Board_Model');
-        $board = $this->Board_Model->getAll();
+
+        $page = $this->input->post('pagenum');
+        $board = $this->Board_Model->get_page(intval($page));
 
         $boards = array();
 
@@ -36,6 +38,7 @@ class Board extends CI_Controller
                 $boards['created'][$i] = $board->created;
                 $i++;
             }
+
             $this->load->view('board', $boards);
             $this->load->view('footer');
         } else {
@@ -51,7 +54,7 @@ class Board extends CI_Controller
 
         $page = $this->input->post('pagenum');
         $data['clien'] = $this->Board_Model->get_page(intval($page));
-        $this->load->view('/board/main/page',$data);
+        $this->load->view('/board/main',$data);
     }
 
 
@@ -103,10 +106,10 @@ class Board extends CI_Controller
 
     }
 
-//    public function notification(){
-//        $this->load->view('head');
-//        $this->load->view('notification');
-//        $this->load->view('footer');
-//    }
+    public function notification(){
+        $this->load->view('head');
+        $this->load->view('notification');
+        $this->load->view('footer');
+    }
 
 }
