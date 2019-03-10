@@ -1,22 +1,26 @@
-<div id="bodyLayer">
-    <div class="loginLayer">
-        <a href="/tourhere">x</a>
-        <div class="loginContent">
-            <div class="loginTop">
-                <h2>Register</h2>
-            </div>
-            <?php
-                echo validation_errors();
-            ?>
-            <?php echo form_open('auth/register'); ?>
-                    <input type="text" name="name" placeholder="이름" value="<?php echo set_value('name'); ?>" style="margin-bottom: 30px;margin-top: 40px;"><br>
-                    <input type="text" name="id" placeholder="아이디"  value="<?php echo set_value('id'); ?>" style="margin-bottom: 30px;"><br>
-                    <input type="password" name="pw" placeholder="비밀번호"  value="<?php echo set_value('pw');?>" style="margin-bottom: 30px;">
-                     <input type="password" name="re_pw" placeholder="비밀번호 확인"  value="<?php echo set_value('re_pw');?>" style="margin-bottom: 20px;">
-                <div class="loginBottom">
-                    <input type="submit" value="회원가입" style="height: 30px;">
-                </div>
-            </form>
-        </div>
+<?php
+if(!$this->session->userData('userId')){
+
+    redirect('/auth/login');
+}
+?>
+
+<div class="center contents posting">
+    <a href="/index.php/board/mypage" class="arrow"><img src="/assets/img/mybackarrow.png" alt="b
+    ack"></a>
+    <input type="hidden" name="id" id="userId" value='<?= $this->session->userdata('userId'); ?>'/>
+    <div class="gall">
+        <img src="/assets/img/plus.svg" alt="plus" id="img">
+    </div>
+    <div class="toupload">
+        <a href="javascript:" class="my_button" onclick="fileUploadAction();">upload</a>
+        <input type="file" multiple name="upload[]" id="upload" />
+    </div>
+    <div class="userTxts">
+
+        <textarea name="userTxt" id="userTxt" cols="30" rows="10" placeholder="이곳에 글을 써주세요"></textarea>
+    </div>
+    <div class="save">
+        <a href="javascript:" class="my_button" onclick="submitAction();">Save</a>
     </div>
 </div>

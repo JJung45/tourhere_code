@@ -15,7 +15,7 @@ class Posting extends CI_Controller{
         $this->base();
     }
 
-    function do_upload(){
+    function do_upload(){//수정
 
         $this->form_validation->set_rules('id', 'userId', 'required');
         $this->form_validation->set_rules('txt', 'userTxt', 'required');
@@ -44,14 +44,25 @@ class Posting extends CI_Controller{
 
             $this->load->model('Board_Model');
             $fileArr=implode(',',$file);
+
             $data = array(
                 'id' => $_POST['id'],
                 'img' => $fileArr,
                 'txt' => $_POST['txt'],
             );
-            $this->Board_Model->add($data);
 
-            echo "업로드성공";
+            if(isset($_POST['update'])){
+                $data['bidx'] = $_POST['bidx'];
+                $this->Board_Model->update($data);
+                // echo "업로드 수정 성공";
+                // redirect("/board/mypage");
+            }else{
+                $this->Board_Model->add($data);
+                // echo "업로드 성공";
+                // redirect("/board/mypage");
+            }
+
+            echo "업로드 성공";
 
         }
 

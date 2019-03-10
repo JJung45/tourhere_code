@@ -59,7 +59,7 @@ class Auth extends CI_Controller
     function authenication(){
         $this->load->model('User_Model');
         $user = $this->User_Model->getById(array(
-           'id'=>$this->input->post('id')
+            'id'=>$this->input->post('id')
         ));
         if($this->input->post('id')==$user->id && password_verify($this->input->post('pw'),$user->pw)){
             $this->session->set_userdata('is_login',true);

@@ -10,7 +10,7 @@
                 }
                 ?>
                 <li class='col-4'>
-                    <a href='/board/view?num=<?=$board->bidx;?>' style='display:block'>
+                    <a href='/index.php/board/view?num=<?=$board->bidx?>' style='display:block'>
                         <div class='gallery' style='background:url("/assets/upload/<?=$img?>") no-repeat 50%; background-size:cover'></div>
                     </a>
                     <div class='selectxt'>
@@ -26,20 +26,47 @@
 <script>
     var track_page = 1;
 
+    $(window).load(function(){
+        $search = $_GET['search'];
+        if($search){
+            if($search=="1"){
+                load_contents('accomodation');
+            }else if($search=="2"){
+                load_contents('restaurant');
+            }else{
+                load_contents('attraction');
+            }
+        }else{
+            load_contents();
+        }
+    })
+
     $(window).scroll(function(){
         if($(window).scrollTop()+$(window).height()>=$(document).height()){
             load_contents();
         }
     });
 
-    function load_contents() {
-            $.get('/board/boardList', $.param({'pagenum': track_page}), function (data) {
+    function load_contents(search) {
+        $.get("<?=site_url('/board/boardList');?>", $.param({'pagenum': track_page, 'search': search}), function (data) {//수정
+            if(search){
+                $("#ul").html(data);
+            }else{
                 $("#ul").append(data);
-                track_page++;
-            }).fail(function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError);
-            })
+            }
+
+            track_page++;
+        }).fail(function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError);
+        })
     }
 
-
+    function load_search(search){
+        $.get("<?= site_url('/board/boardSearch'); ?>", $.param({'search': search}),function(data){
+            $("#ul").html(data);
+            track_page++;
+        }).fail(function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError);
+        })
+    }
 </script>
