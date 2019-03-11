@@ -8,11 +8,17 @@ class Board_Model extends CI_Model {
         $sql = "SELECT * FROM board";
         return $this->db->query($sql)->result();
     }
-    function getById($data){//수정
-        return $this->db->get_where('board',array('id'=>$data['id']))->result();
+
+    function getById(array $data){//수정
+
+        $this->db->order_by('bidx', 'desc');
+        $this->db->where('id', $data['id']);
+        $result = $this->db->get('board');
+
+        return $result->result();
     }
     //무한 스크롤 시도 - 수정
-    function get_page($page_number,$search){
+    function get_page(int $page_number,$search){
         $item_per_page = 10;
         $position = $page_number*$item_per_page;
         if($search==''){
@@ -44,13 +50,13 @@ class Board_Model extends CI_Model {
         return $this->db->get_where('board',array('bidx'=>$bidx))->result();
     }
     //mypage 수정기능
-    function update($data){
+    function update(array $data){
         $this->db->where('bidx',$data['bidx']);
         $this->db->set('created','NOW()',FALSE);
         $this->db->update('board',$data);
     }
     //mypage 삭제 - 수정
-    function delete($bidx){
+    function delete(int $bidx){
         return $this->db->delete('board',array('bidx'=>$bidx));
     }
 }
