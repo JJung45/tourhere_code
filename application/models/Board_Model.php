@@ -1,12 +1,17 @@
 <?php if (!defined('BASEPATH')) {    exit('No direct script access allowed'); }
 class Board_Model extends CI_Model {
     function add($data){
-
-        $this->db->set('created_at','NOW()',FALSE);
-        $this->db->insert('save_upload',$data);
-
         $this->db->set('created','NOW()',FALSE);
         $this->db->insert('board',$data);
+
+//        $this->db->set('created','NOW()',FALSE);
+//        $this->db->set('img','1',FALSE);
+//        $this->db->insert('board',$data);
+//
+//        $img_num = $this->db->get('board','img');
+//        $this->db->set('created_at','NOW()',FALSE);
+//        $this->db->set('imgpath',$img_num,FALSE);
+//        $this->db->insert('save_upload',)
     }
     function getAll(){
         $sql = "SELECT * FROM board";
