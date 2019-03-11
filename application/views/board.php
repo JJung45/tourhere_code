@@ -46,12 +46,4 @@
         })
     }
 
-    function load_search(search){
-        $.get("<?= site_url('/board/boardSearch'); ?>", $.param({'search': search}),function(data){
-            $("#ul").html(data);
-            track_page++;
-        }).fail(function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError);
-        })
-    }
 </script>

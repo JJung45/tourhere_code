@@ -42,11 +42,6 @@ class Board extends CI_Controller
         }
         $this->load->view('/ajax/boardList', $data);
     }
-    public function boardSearch(){
-        $search = $this->input->get('search') ?? 0;
-        $data['boards'] = $this->Board_Model->search_page($search);
-        $this->load->view('/ajax/board_list',$data);
-    }
     public function view(){//작업 미완료 - 수정
         $this->load->view('head');
         $bidx = $this->input->get('num');
