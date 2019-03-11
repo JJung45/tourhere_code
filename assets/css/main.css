@@ -32,15 +32,10 @@ html{
     font-size: 30px;
     width: 30%;
 }
-.hMenu ul{
+.hMenu h2{
+    float: left;
     width: 70%;
-    float: left;
-    color: #ced0e2;
-}
-.hMenu ul>li{
-    float: left;
-    width: 24%;
-    text-align: center;
+    text-align: right;
 }
 .loginjoin a{
     background-color:#fcfcfc;

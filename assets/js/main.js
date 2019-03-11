@@ -20,14 +20,6 @@ section.on('mouseout',function(){
     });
 })
 
-let subLi=$('li.sub>img');
-let submenu=$('ul.submenu');
-subLi.on('click', function(){
-    submenu.animate({
-        height: "toggle"
-    },1000);
-})
-
 let bodyLayer=$('#wrap');
 
 let loginLayer=$('.loginLayer');
@@ -59,6 +51,7 @@ function fileUploadAction(){
 function change(e){
     sel_files=[];
     $('#img').hide();
+    $('.gall').empty();//수정
 
     let files=e.target.files;
     let filesArr=Array.prototype.slice.call(files);
@@ -89,7 +82,7 @@ function deleteImageAction(index){
     $(img_id).remove();
 }
 
-function submitAction(){
+function submitAction(update){
     let filed=new FormData();
     let length = sel_files.length;
 
@@ -115,8 +108,13 @@ function submitAction(){
     filed.append("id",$('#userId').val());
     filed.append("imgcount",length);
 
+    if(update=="update"){
+        filed.append("update","update");
+        filed.append("bidx",$('#bidx').val());
+    }
+
     $.ajax({
-        url:"/posting/do_upload",
+        url:"/index.php/posting/do_upload",
         type: 'POST',
         processData: false,
         contentType: false,
@@ -124,11 +122,21 @@ function submitAction(){
         dataType:'json',
         success: function(repons) {
             alert(repons.currentTarget.responseText);
-            window.location.replace('/board/mypage');
+            window.location.replace("/index.php/board/mypage");
         },
         error: function(request, status, error) {
             alert(request.responseText);
         }
     });
 
+}
+
+//수정
+function confirmed(bidx){
+    var okay = confirm('정말 삭제하시겠습니까?');
+    if(okay){
+        window.location.replace("/index.php/board/delete?bidx="+bidx);
+    }else{
+        window.location.replace("/board/mypage");
+    }
 }

@@ -26,21 +26,6 @@
 <script>
     var track_page = 1;
 
-    $(window).load(function(){
-        $search = $_GET['search'];
-        if($search){
-            if($search=="1"){
-                load_contents('accomodation');
-            }else if($search=="2"){
-                load_contents('restaurant');
-            }else{
-                load_contents('attraction');
-            }
-        }else{
-            load_contents();
-        }
-    })
-
     $(window).scroll(function(){
         if($(window).scrollTop()+$(window).height()>=$(document).height()){
             load_contents();
@@ -48,7 +33,7 @@
     });
 
     function load_contents(search) {
-        $.get("<?=site_url('/board/boardList');?>", $.param({'pagenum': track_page, 'search': search}), function (data) {//수정
+        $.get("<?=site_url("/board/boardList");?>", $.param({'pagenum': track_page, 'search': search}), function (data) {//수정
             if(search){
                 $("#ul").html(data);
             }else{

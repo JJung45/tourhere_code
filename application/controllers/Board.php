@@ -35,12 +35,12 @@ class Board extends CI_Controller
     public function boardList(){
         $page = $this->input->get('pagenum') ?? 0;
         $search = $this->input->get('search') ?? '';
-        if(isset($search)){
+        if($search!=''){
             $data['boards'] = $this->Board_Model->get_page(intval($page),$search);
         }else{
             $data['boards'] = $this->Board_Model->get_page(intval($page),'');
         }
-        $this->load->view('/ajax/board_list', $data);
+        $this->load->view('/ajax/boardList', $data);
     }
     public function boardSearch(){
         $search = $this->input->get('search') ?? 0;
@@ -87,7 +87,7 @@ class Board extends CI_Controller
     public function notification(){
         $this->load->view('head');
         $this->load->library('pagination');
-        $config['base_url']= 'iboard/notification/';
+        $config['base_url']= 'notification/';
         $config['total_rows'] = 200;
         $config['full_tag_open']='<div style="position: absolute;bottom: 20px;left: 50%;">';
         $config['full_tag_close']='</div>';
