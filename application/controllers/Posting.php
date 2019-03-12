@@ -50,7 +50,6 @@ class Posting extends CI_Controller{
                 'txt' => $_POST['txt'],
             );
 
-            $imgpath = $fileArr;
 
             if(isset($_POST['update'])){
                 $data['bidx'] = $_POST['bidx'];
@@ -58,7 +57,7 @@ class Posting extends CI_Controller{
                 // echo "업로드 수정 성공";
                 // redirect("/board/mypage");
             }else{
-                $this->Board_Model->add($data,$imgpath);
+                $this->Board_Model->add($data,$fileArr);
                 // echo "업로드 성공";
                 // redirect("/board/mypage");
             }
